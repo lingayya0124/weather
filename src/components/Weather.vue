@@ -8,6 +8,7 @@
             class="form-control"
             v-model="city"
             placeholder="Enter your city"
+            data-test="stuff"
             @keyup.enter="getWeather()"
             @keydown="show = false"
           />
@@ -40,7 +41,8 @@
 </template>
 
 <script>
-import Vue from "vue";
+// import Vue from "vue";
+import axios from "axios";
 
 export default {
   data() {
@@ -60,7 +62,7 @@ export default {
     getWeather() {
       this.enter = true;
       this.show = true;
-      Vue.axios
+      axios
         .get(`${this.url}daily?&city=${this.city}&days=7&key=${this.apikey}`)
         .then((resp) => {
           this.weather = resp.data.data[0].temp;

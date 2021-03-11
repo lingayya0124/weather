@@ -3,13 +3,14 @@
     <div class="container">
       <div class="row mt-5 justify-content-center">
         <div class="col-6 City_input">
-          <b-form-input
-            class=""
+          <input
+            type="text"
+            class="form-control"
             v-model="city"
             placeholder="Enter your city"
             @keyup.enter="getWeather()"
             @keydown="show = false"
-          ></b-form-input>
+          />
         </div>
       </div>
 
@@ -66,7 +67,9 @@ export default {
           this.city_name = resp.data.city_name;
           this.country = resp.data.country_code;
           this.forecast = resp.data.data;
-          console.warn(resp);
+          console.warn(resp.data);
+
+          //
         });
     },
   },

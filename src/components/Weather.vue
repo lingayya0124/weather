@@ -32,8 +32,8 @@
         class="forecast row d-flex justify-content-center bd-dark"
         v-if="show"
       >
-        <div class="col1" v-for="days in forecast" :key="days.index">
-          {{ days.temp }}
+        <div class="col1" v-for="temp in forecast" :key="temp.index">
+          {{ temp }}
         </div>
       </div>
     </div>
@@ -41,7 +41,6 @@
 </template>
 
 <script>
-// import Vue from "vue";
 import axios from "axios";
 
 export default {
@@ -68,10 +67,10 @@ export default {
           this.weather = resp.data.data[0].temp;
           this.city_name = resp.data.city_name;
           this.country = resp.data.country_code;
-          this.forecast = resp.data.data;
-          console.warn(resp.data);
 
-          //
+          resp.data.data.forEach((dayTemp) => {
+            this.forecast.push(dayTemp.temp);
+          });
         });
     },
   },
@@ -114,4 +113,3 @@ export default {
   width: 120px;
   height: 285px;
 }
-</style>

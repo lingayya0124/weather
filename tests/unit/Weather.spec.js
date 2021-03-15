@@ -74,7 +74,10 @@ describe("Weather.vue", () => {
     wrapper.find("input").trigger("keyup.enter");
 
     await flushPromises();
-
-    expect(wrapper.find("#0").text()).toEqual(MOCK_CITY_FORECAST[0]);
+    for (let index = 0; index < MOCK_CITY_FORECAST.length; index++) {
+      expect(wrapper.find(`[id='${index}']`).text()).toEqual(
+        `${MOCK_CITY_FORECAST[index]}`
+      );
+    }
   });
 });

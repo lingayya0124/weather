@@ -9,7 +9,7 @@
             v-model="city"
             placeholder="Enter your city"
             @keyup.enter="getWeather()"
-            @keydown="show = false"
+            @input="show = false"
           />
         </div>
       </div>
@@ -31,7 +31,12 @@
         class="forecast row d-flex justify-content-center bd-dark"
         v-if="show"
       >
-        <div class="col1" v-for="temp in forecast" :key="temp.index">
+        <div
+          class="col1 mr-2"
+          v-for="(temp, index) in forecast"
+          :key="index"
+          :id="index"
+        >
           {{ temp }}
         </div>
       </div>
@@ -58,6 +63,7 @@ export default {
   },
   methods: {
     getWeather() {
+      this.forecast.length = 0;
       this.enter = true;
       this.show = true;
       axios

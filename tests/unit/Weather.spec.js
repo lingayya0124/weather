@@ -70,4 +70,11 @@ describe("Weather.vue", () => {
       `${MOCK_CITY_NAME},${MOCK_CITY_COUNTRY}`
     );
   });
+  it("Forecast Testing", async () => {
+    wrapper.find("input").trigger("keyup.enter");
+
+    await flushPromises();
+
+    expect(wrapper.find("#0").text()).toEqual(MOCK_CITY_FORECAST[0]);
+  });
 });

@@ -33,7 +33,12 @@ export default {
   color: #42b983;
 }
 
-body {
+/* body {
   background-color: #3aafa9;
+} */
+body {
+  background-image: url("assets/sun_bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>
